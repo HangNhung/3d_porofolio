@@ -1,10 +1,9 @@
-import { PointMaterial, Points, Preload } from "@react-three/drei";
+import { Preload } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { random } from "maath";
 import React, { Suspense, useMemo, useRef } from "react";
 
 const CustomGeometryParticles = (props) => {
-  const { count, shape } = props;
+  const { count } = props;
 
   // This reference gives us direct access to our points
   const points = useRef();
@@ -14,37 +13,23 @@ const CustomGeometryParticles = (props) => {
     points.current.rotation.y += delta / 15;
   });
 
-  // Generate our positions attributes array
+  // Create a new Float32Array with the number of points * 3 (x, y, z)
+  // -> we are going to generate a random position for 2000 particles
+  // -> thus we need 6000 items in our array
   const particlesPosition = useMemo(() => {
     const positions = new Float32Array(count * 3);
 
-    if (shape === "box") {
-      for (let i = 0; i < count; i++) {
-        let x = (Math.random() - 0.5) * 2;
-        let y = (Math.random() - 0.5) * 2;
-        let z = (Math.random() - 0.5) * 2;
+    for (let i = 0; i < count; i++) {
+      let x = (Math.random() - 0.5) * 2;
+      let y = (Math.random() - 0.5) * 2;
+      let z = (Math.random() - 0.5) * 2;
 
-        positions.set([x, y, z], i * 3);
-      }
-    }
-
-    if (shape === "sphere") {
-      const distance = 1;
-
-      for (let i = 0; i < count; i++) {
-        const theta = THREE.MathUtils.randFloatSpread(360);
-        const phi = THREE.MathUtils.randFloatSpread(360);
-
-        let x = distance * Math.sin(theta) * Math.cos(phi);
-        let y = distance * Math.sin(theta) * Math.sin(phi);
-        let z = distance * Math.cos(theta);
-
-        positions.set([x, y, z], i * 3);
-      }
+      // We add ti 3 values to the attribute array for every loop
+      positions.set([x, y, z], i * 3);
     }
 
     return positions;
-  }, [count, shape]);
+  }, [count]);
 
   return (
     <points ref={points}>
@@ -59,37 +44,13 @@ const CustomGeometryParticles = (props) => {
       <pointsMaterial
         size={0.003}
         color="#5786F5"
+        // make your particles smaller
         sizeAttenuation
         depthWrite={false}
       />
     </points>
   );
 };
-
-// const Stars = (props) => {
-//   const ref = useRef();
-
-//   const sphere = random.inSphere(new Float32Array(6000), { radius: 1.2 });
-
-//   useFrame((state, delta) => {
-//     ref.current.rotation.x -= delta / 10;
-//     ref.current.rotation.y -= delta / 15;
-//   });
-
-//   return (
-//     <group rotation={[0, 0, Math.PI / 4]}>
-//       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-//         <PointMaterial
-//           transparent
-//           color="#f272c8"
-//           size={0.002}
-//           sizeAttenuation={true}
-//           depthWrite={false}
-//         />
-//       </Points>
-//     </group>
-//   );
-// };
 
 const StarsCanvas = () => {
   return (
@@ -100,7 +61,7 @@ const StarsCanvas = () => {
         }}
       >
         <Suspense fallback={null}>
-          <CustomGeometryParticles count={6000} shape="box" />
+          <CustomGeometryParticles count={2000} />
         </Suspense>
 
         <Preload all />
