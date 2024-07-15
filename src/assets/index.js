@@ -25,10 +25,6 @@ import buymed from "./company/buymed.jpg";
 import lengkeng from "./company/lengkeng.jpeg";
 import tma from "./company/tma.gif";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
-
 export {
   logo,
   backend,
@@ -54,7 +50,4 @@ export {
   buymed,
   lengkeng,
   tma,
-  carrent,
-  jobit,
-  tripguide,
 };

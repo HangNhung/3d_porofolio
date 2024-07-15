@@ -112,4 +112,26 @@ const technologies = [
   },
 ];
 
-export { experience, technologies };
+const projects = [
+  {
+    name: "To do list",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "",
+    source_code_link: "https://github.com/",
+  },
+];
+
+export { experience, technologies, projects };
