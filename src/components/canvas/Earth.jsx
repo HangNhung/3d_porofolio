@@ -8,13 +8,24 @@ const Earth = () => {
 
   return (
     <mesh>
-      <primitive object={earth?.scene} position={[0, 0, 0]} />
+      <primitive
+        object={earth?.scene}
+        position={[0, 0, 0]}
+        position-y={0}
+        rotation-y={0}
+      />
     </mesh>
   );
 };
 const EarthCanvas = () => {
   return (
-    <Canvas frameloop="demand" camera={{ position: [0, 0, 2] }}>
+    <Canvas
+      frameloop="demand"
+      shadows
+      dpr={[1, 2]}
+      gl={{ preserveDrawingBuffer: true }}
+      camera={{ position: [0, 0, 3] }}
+    >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           autoRotate={true}

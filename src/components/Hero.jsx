@@ -23,7 +23,9 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <ComputersCanvas />
+      <div className="w-full h-full">
+        <ComputersCanvas />
+      </div>
 
       {/* Add mouse icon */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
