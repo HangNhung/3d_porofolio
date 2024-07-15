@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF, useHelper } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { CanvasLoader } from "src/components";
 
 const Computers = ({ isMobile }) => {
@@ -9,7 +9,6 @@ const Computers = ({ isMobile }) => {
   // const spotLight = useRef(computer.scene);
   // useHelper(spotLight, SpotLightHelper, "yellow");
 
-  const { viewport, size } = useThree();
   const ref = useRef();
 
   return (

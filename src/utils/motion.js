@@ -50,4 +50,23 @@ const staggerContainer = (staggerChildren, delayChildren) => {
   };
 };
 
-export { textVariants, fadeIn, staggerContainer };
+const slideIn = (direction, type, delay, duration) => {
+  return {
+    hidden: {
+      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      transition: {
+        type: type,
+        delay: delay,
+        duration: duration,
+        ease: "easeOut",
+      },
+    },
+  };
+};
+
+export { textVariants, fadeIn, staggerContainer, slideIn };
