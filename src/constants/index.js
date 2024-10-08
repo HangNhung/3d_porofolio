@@ -16,6 +16,7 @@ import {
   docker,
   threejs,
 } from "src/assets";
+import { todoAppReactVite, trelloTutorial } from "src/assets/projects";
 
 const experience = [
   {
@@ -114,23 +115,46 @@ const technologies = [
 
 const projects = [
   {
-    name: "To do list",
+    name: "To do App",
+    description:
+      "A simple to-do application built with React and TypeScript, featuring a mock API using Mock Server Worker. This application allows users to add, toggle, and delete tasks, with form validation and unit tests.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "vite",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "Mock API",
         color: "pink-text-gradient",
       },
     ],
-    image: "",
-    source_code_link: "https://github.com/",
+    image: todoAppReactVite,
+    source_code_link: "https://github.com/HangNhung/todo-app",
+  },
+  {
+    name: "Trello Tutorial",
+    description:
+      "This Trello clone project is a task management app built with React, showcasing essential features like board and list creation, card management, and drag-and-drop functionality",
+    tags: [
+      {
+        name: "next",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Prisma",
+        color: "yellow-text-gradient",
+      },
+      {
+        name: "Clerk",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: trelloTutorial,
+    source_code_link: "https://github.com/HangNhung/trello-tutorial",
   },
 ];
 
